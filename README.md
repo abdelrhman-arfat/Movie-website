@@ -8,4 +8,4 @@ Tools : next js - redux toolkit & RTK Quary - tailwind - ts
 
 ## Deploy on Vercel
 
-URL : [https://](https://movie-website-seven-flame.vercel.app/)
+URL : https://movie-website-seven-flame.vercel.app/
