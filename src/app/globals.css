@@ -3,7 +3,7 @@
 @tailwind utilities;
 /* Btns : */
 .perv-next-div button {
-  @apply bg-gradient-to-r from-purple-500  to-rose-500 px-2 py-1 capitalize text-white rounded-md duration-200 hover:tracking-wider;
+  @apply bg-gradient-to-r from-purple-500  to-rose-500 px-2 py-1 capitalize text-[16px] sm:text-[18px] sm:font-semibold text-white rounded-md duration-200 hover:tracking-wider;
 }
 .btn-register-gradient {
   @apply bg-gradient-to-r from-blue-500 to-red-500 text-white px-4 py-2 rounded-full hover:tracking-wider;
@@ -12,4 +12,21 @@
 /* constants helper */
 .centered {
   @apply flex items-center justify-center;
+}
+/* loaders */
+.loader {
+  animation: loader 2s infinite ease-in;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 5px solid #f3f3f3;
+  border-bottom: 5px solid #3498db;
+}
+@keyframes loader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

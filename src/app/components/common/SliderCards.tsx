@@ -13,7 +13,7 @@ const SliderCards = ({ children }: { children: React.ReactNode }) => {
     }
   }, []);
   return (
-    <div>
+    <div className="my-4">
       <div className="relative">
         <div>
           <div className="absolute cursor-pointer z-40 hover:scale-110 duration-200 top-1/2 left-1  bg-gradient-to-r from-purple-400  to-rose-400 p-1 -translate-y-1/2 rounded-full">

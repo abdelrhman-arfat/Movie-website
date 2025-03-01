@@ -9,7 +9,7 @@ const AppProvider = ({ children }: { children: React.ReactNode }) => {
     <Provider store={store}>
       <PersistGate
         loading={
-          <div className="bg-black/50 w-screen h-screen flex justify-center items-center absolute">
+          <div className="bg-black/20 w-screen h-screen flex justify-center items-center absolute">
             <SyncLoader color="white" />
           </div>
         }

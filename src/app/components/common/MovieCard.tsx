@@ -30,7 +30,7 @@ const MovieCard = ({ movie }: { movie: TPFilms }) => {
       </div>
       <div className="flex w-full justify-between px-6 pt-4 pb-2">
         <p className="bg-gray-200 rounded-full px-2 py-1 text-[10px] sm:text-sm font-semibold text-gray-700 mr-2 mb-2">
-          {movie.release_date}
+          {movie?.release_date || movie?.first_air_date}
         </p>
         <p className="bg-gray-200 rounded-full px-3 py-1 text-[10px]  sm:text-[12px] font-semibold text-gray-700 mr-2 mb-2">
           {movie.adult ? "+18 (Mature Content)" : "Suitable for Everyone"}

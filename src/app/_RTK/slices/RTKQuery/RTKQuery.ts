@@ -11,10 +11,17 @@ export const filmsApi = createApi({
     getMoviesList: builder.query<TMoviesList, void>({
       query: () => `/movies/list`,
     }),
+    getTvMovies: builder.query<TMoviesList, void>({
+      query: () => `/tv/list`,
+    }),
     getPopularMovies: builder.query<TTheMain, number>({
       query: (page: number) => `/popular?page=${page}`,
     }),
   }),
 });
 
-export const { useGetMoviesListQuery, useGetPopularMoviesQuery } = filmsApi;
+export const {
+  useGetMoviesListQuery,
+  useGetPopularMoviesQuery,
+  useGetTvMoviesQuery,
+} = filmsApi;

@@ -3,7 +3,13 @@ import { TMoviesList } from "@/app/_RTK/types/MoviesList";
 import Link from "next/link";
 import { memo } from "react";
 
-const FilterComponent = ({ List }: { List: TMoviesList }) => {
+const FilterComponent = ({
+  List,
+  path,
+}: {
+  List: TMoviesList;
+  path: string;
+}) => {
   return (
     <div
       id="dropdownInformation"
@@ -14,7 +20,7 @@ const FilterComponent = ({ List }: { List: TMoviesList }) => {
           <li key={item.name + "-" + item.id}>
             <Link
               className="block px-4 py-2 text-wrap text-white duration-150 hover:bg-gray-100 dark:hover:bg-neutral-500 "
-              href={"#"}
+              href={`/${path}/list/${item.id}`}
             >
               {item.name}
             </Link>

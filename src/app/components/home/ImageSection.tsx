@@ -8,7 +8,7 @@ const ImageSection = () => {
       <div className="mx-auto  overflow-hidden relative group w-[90%] h-full">
         <Image
           src={"/cinema.jpg"}
-          className=" rounded-xl"
+          className=" rounded-xl bg-gray-500"
           style={{
             objectFit: "cover",
             objectPosition: "center",
