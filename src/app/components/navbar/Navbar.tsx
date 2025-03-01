@@ -29,7 +29,7 @@ const Navbar = () => {
           <Logo styles="text-2xl md:text-3xl uppercase font-semibold text-white hover:text-gray-300 duration-200" />
         </div>
         {/* biggerScreens */}
-        <div className="flex items-center gap-4 sm:gap-8">
+        <div className="flex items-center gap-3 sm:gap-6">
           <BiggerScreenNavComponent links={links} />
           <PhonesScreenNavComponent links={links} />
           <UserCheckerComponent />

@@ -21,7 +21,7 @@ const SliderCards = ({ children }: { children: React.ReactNode }) => {
               onClick={() => {
                 if (scrollContainerRef?.current) {
                   scrollContainerRef.current.scrollBy({
-                    left: -900,
+                    left: -scrollContainerRef.current.clientWidth,
                     behavior: "smooth",
                   });
                 }
@@ -34,7 +34,7 @@ const SliderCards = ({ children }: { children: React.ReactNode }) => {
               onClick={() => {
                 if (scrollContainerRef?.current) {
                   scrollContainerRef.current.scrollBy({
-                    left: +900,
+                    left: +scrollContainerRef.current.clientWidth,
                     behavior: "smooth",
                   });
                 }

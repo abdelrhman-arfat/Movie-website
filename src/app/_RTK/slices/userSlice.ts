@@ -16,11 +16,9 @@ const userInfoSlice = createSlice({
       return state;
     },
     // when logout
-    removeUserInfo: () => {
-      return {
-        isLogin: false,
-        data: {},
-      };
+    removeUserInfo: (state) => {
+      state = { isLogin: false, data: {} };
+      return state;
     },
   },
 });
