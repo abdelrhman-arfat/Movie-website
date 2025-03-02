@@ -23,30 +23,24 @@ const Page = async ({ params }: PageProps) => {
     items?: TPFilms[];
   } = {};
 
-  const fetchList = async () => {
-    try {
-      const res = await fetch(`${API_URL}/list/${list_id}?language=en-US`, {
-        headers: {
-          accept: "application/json",
-          Authorization: `Bearer ${ACCESS_TOKEN}`,
-        },
-        cache: "no-store",
-      });
+  try {
+    const res = await fetch(`${API_URL}/list/${list_id}?language=en-US`, {
+      headers: {
+        accept: "application/json",
+        Authorization: `Bearer ${ACCESS_TOKEN}`,
+      },
+      cache: "no-store",
+    });
 
-      if (!res.ok) {
-        throw new Error("Failed to fetch data");
-      }
-
-      listData = await res.json();
-      console.log(listData);
-    } catch (error) {
-      console.error("Error fetching movie list:", error);
-      return (
-        <div className="text-center text-red-500">Failed to load data.</div>
-      );
+    if (!res.ok) {
+      throw new Error("Failed to fetch data");
     }
-  };
-  fetchList();
+
+    listData = await res.json();
+  } catch (error) {
+    console.error("Error fetching movie list:", error);
+    return <div className="text-center text-red-500">Failed to load data.</div>;
+  }
   return (
     <div className="w-full bg-neutral-800 py-6">
       <div className="mx-auto w-[90%]">
