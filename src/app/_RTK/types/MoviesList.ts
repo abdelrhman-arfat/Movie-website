@@ -1,6 +1,7 @@
 export type TMoviesList = {
   data: {
     success: boolean;
-    genres: { name: string; id: number }[];
+    genres: TGeners[];
   };
 };
+export type TGeners = { id: number; name: string };

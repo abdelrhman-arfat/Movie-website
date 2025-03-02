@@ -3,6 +3,7 @@ import { MovieCard } from "@/app/components/common/MovieCard";
 import SliderCards from "@/app/components/common/SliderCards";
 import { ACCESS_TOKEN, API_URL, IMAGE_URL } from "@/app/constant/api_accts";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 interface PageProps {
   params: Promise<{ list_id: string }>;
@@ -39,7 +40,17 @@ const Page = async ({ params }: PageProps) => {
     listData = await res.json();
   } catch (error) {
     console.error("Error fetching movie list:", error);
-    return <div className="text-center text-red-500">Failed to load data.</div>;
+    return (
+      <div className="text-2xl text-red-500 h-screen w-full flex items-center justify-center ">
+        <p>Failed to load data.</p>
+        <Link
+          href={"/"}
+          className="bg-red-500 text-white px-2 py-1 hover:bg-red-600 duration-200"
+        >
+          Home
+        </Link>
+      </div>
+    );
   }
   return (
     <div className="w-full bg-neutral-800 py-6">
@@ -50,13 +61,28 @@ const Page = async ({ params }: PageProps) => {
               key={listData.backdrop_path}
               src={`${IMAGE_URL}${listData.poster_path}`}
               fill
-              className="object-cover"
-              alt={listData.name || "imge"}
+              style={{
+                objectFit: "cover",
+                objectPosition: "center",
+              }}
+              className="bg-gray-400"
+              alt={listData.name || "The List poster"}
             />
           ) : (
             <div className="w-full h-full flex flex-col gap-3 items-center justify-center">
               <div className="loader" />
               <p className="text-neutral-200">No Image in or not found</p>
+              {!listData.items?.length && (
+                <div className="text-white flex flex-col gap-1 items-center">
+                  <p> No movies found</p>
+                  <Link
+                    href={"/"}
+                    className="bg-red-500 text-white px-2 py-1 rounded-md "
+                  >
+                    Home
+                  </Link>
+                </div>
+              )}
             </div>
           )}
         </div>
@@ -76,11 +102,17 @@ const Page = async ({ params }: PageProps) => {
           </h1>
         </div>
 
-        <SliderCards>
-          {listData?.items?.map((movie: TPFilms, index: number) => (
-            <MovieCard key={`${index}-${movie.id}-movie`} movie={movie} />
-          ))}
-        </SliderCards>
+        {listData.items?.length ? (
+          <SliderCards>
+            {listData?.items?.map((movie: TPFilms, index: number) => (
+              <MovieCard key={`${index}-${movie.id}-movie`} movie={movie} />
+            ))}
+          </SliderCards>
+        ) : (
+          <div className="text-center my-4 text-2xl text-neutral-200">
+            No movies found in this list.
+          </div>
+        )}
       </div>
     </div>
   );

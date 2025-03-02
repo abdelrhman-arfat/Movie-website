@@ -36,12 +36,12 @@ const MovieCard = ({ movie }: { movie: TPFilms }) => {
           {movie.adult ? "+18 (Mature Content)" : "Suitable for Everyone"}
         </p>
       </div>
-      <div className="text-center w-[100%] mt-2 cursor-pointer text-white bg-gradient-to-r from-purple-600 to-rose-600 group py-2">
-        {/*  href={`/movie/${movie.id}`} */}
-        <Link href={"#"} className="group-hover:tracking-wider duration-200">
-          Details
-        </Link>
-      </div>
+      <Link
+        className="text-center hover:tracking-wider w-full mt-2 cursor-pointer text-white bg-gradient-to-r from-purple-600 to-rose-600 px-4 h-[40px] inline-block py-2"
+        href={`/movies/${movie.id}`}
+      >
+        Details
+      </Link>
     </div>
   );
 };
