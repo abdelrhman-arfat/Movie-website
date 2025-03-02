@@ -4,13 +4,12 @@ import SliderCards from "@/app/components/common/SliderCards";
 import { ACCESS_TOKEN, API_URL, IMAGE_URL } from "@/app/constant/api_accts";
 import Image from "next/image";
 import React from "react";
+interface PageProps {
+  params: Promise<{ list_id: string }>;
+}
 
-const page = ({ params }: { params: { list_id: string } }) => {
-  if (!params?.list_id) {
-    return <div>Error: No list ID found</div>;
-  }
-
-  const { list_id } = params;
+const Page = async ({ params }: PageProps) => {
+  const { list_id } = await params;
 
   let listData: {
     backdrop_path?: string | null;
@@ -93,4 +92,4 @@ const page = ({ params }: { params: { list_id: string } }) => {
   );
 };
 
-export default page;
+export default Page;

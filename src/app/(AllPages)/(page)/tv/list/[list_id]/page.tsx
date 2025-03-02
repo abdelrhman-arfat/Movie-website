@@ -1,8 +1,19 @@
 import TvListSection from "@/app/components/tv/TvListSection";
 import React from "react";
 
-const Page = ({ params }: { params: { list_id: string } }) => {
-  const { list_id } = params;
+interface PageProps {
+  params: Promise<{ list_id: string }>;
+}
+
+const Page = async ({ params }: PageProps) => {
+  const { list_id } = await params;
+
+  if (!list_id) {
+    return (
+      <div className="text-red-500 text-center">Error: No list ID found</div>
+    );
+  }
+
   return (
     <div className="w-full bg-neutral-800 py-6">
       <div className="mx-auto w-[90%]">
@@ -11,4 +22,5 @@ const Page = ({ params }: { params: { list_id: string } }) => {
     </div>
   );
 };
+
 export default Page;
