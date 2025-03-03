@@ -4,7 +4,7 @@ import { allReducers } from "./allReducers";
 const persistConfig = {
   key: "root",
   storage: storageSession,
-  whitelist: ["userInfo"],
+  whitelist: ["userInfo",""],
 };
 
 

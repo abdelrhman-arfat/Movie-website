@@ -4,10 +4,14 @@ import Image from "next/image";
 import Link from "next/link";
 
 import React from "react";
+import { AddToWatchList } from "./AddToWatchList";
+import { AddToFav } from "./AddToFav";
 
 const MovieCard = ({ movie }: { movie: TPFilms }) => {
   return (
-    <div className="rounded overflow-hidden min-w-[250px] sm:min-w-[300px] shadow-lg">
+    <div className="rounded relative max-w-[300px] overflow-hidden min-w-[250px] sm:min-w-[300px] shadow-lg">
+      <AddToWatchList id={movie.id} />
+      <AddToFav id={movie.id} />
       <Image
         priority
         className=" bg-gray-400 h-[445px] sm:h-[400px]"

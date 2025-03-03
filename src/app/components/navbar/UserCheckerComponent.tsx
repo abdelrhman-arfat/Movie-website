@@ -8,6 +8,7 @@ import { useAppDispatch } from "@/app/hooks/AppDispatch";
 import { removeUserInfo } from "@/app/_RTK/slices/userSlice";
 import Swal from "sweetalert2/dist/sweetalert2.js";
 import { CgClose } from "react-icons/cg";
+import { IMAGE_URL } from "@/app/constant/api_accts";
 
 const UserCheckerComponent = () => {
   const swalWithBootstrapButtons = Swal.mixin({
@@ -36,8 +37,11 @@ const UserCheckerComponent = () => {
         width={40}
         height={40}
         priority
-        className="rounded-full cursor-pointer"
-        src={`https://www.gravatar.com/avatar/237b0d4219396304ac37013397e35dba?s=200&d=identicon`}
+        className="rounded-full w-[45px] shadow-sm h-[40px] bg-gray-400  cursor-pointer"
+        src={
+          `${IMAGE_URL}${userInfo.data.avatar?.tmdb?.avatar_path}` ||
+          `https://www.gravatar.com/avatar/${userInfo.data?.avatar?.gravatar.hash}?s=200&d=identicon`
+        }
         alt={(userInfo.data.name as string) || "username"}
       ></Image>
 

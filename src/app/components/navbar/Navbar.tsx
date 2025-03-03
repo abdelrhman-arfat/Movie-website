@@ -14,8 +14,12 @@ const Navbar = () => {
       href: "/",
     },
     {
-      name: "Movies",
-      href: "/movies",
+      name: "favorites",
+      href: "/movies/favorites",
+    },
+    {
+      name: "watchlist",
+      href: "/movies/watchlist",
     },
     {
       name: "about",
