@@ -60,11 +60,19 @@ const MoviesFavComponent = () => {
   }
 
   return (
-    <SliderCards>
-      {data?.data?.results?.map((movie, index) => (
-        <MovieCard key={index + "-" + "movie-fav"} movie={movie} />
-      ))}
-    </SliderCards>
+    <div>
+      {data?.data?.results.length ? (
+        <SliderCards>
+          {data?.data?.results.map((movie: TPFilms, index: number) => (
+            <MovieCard movie={movie} key={movie.id + "-movie-" + index} />
+          ))}
+        </SliderCards>
+      ) : (
+        <div className="w-full h-[300px] text-2xl text-white flex items-center justify-center text-center">
+          No movies in your Favorites
+        </div>
+      )}
+    </div>
   );
 };
 
