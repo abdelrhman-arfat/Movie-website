@@ -7,8 +7,11 @@ import { useEffect, useState } from "react";
 import SliderCards from "../common/SliderCards";
 import { MovieCard } from "../common/MovieCard";
 import SkeletonCard from "../common/SkeletonCard";
+import Swal from "sweetalert2";
+import { useRouter } from "next/navigation";
 
 const MoviesWatchList = () => {
+  const Router = useRouter()
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [data, setData] = useState<{
     success?: boolean;
@@ -21,6 +24,13 @@ const MoviesWatchList = () => {
   }>({});
   const userInfo = GetUserInfo();
   useEffect(() => {
+    if (!userInfo.isLogin) {
+      Swal.fire("You Should Login First").then(() => {
+        Router.push("/auth/login");
+      });
+      return;
+    }
+
     const myFN = async () => {
       const response = await axios.get(
         `/api/movies/watchlist?user_id=${userInfo.data.id}`
